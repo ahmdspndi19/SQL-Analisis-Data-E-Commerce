@@ -1,64 +1,85 @@
-# 🛍️ SQL Analisis Data E-Commerce
+# 🛍️ E-Commerce SQL Data Analysis
 
-Proyek ini merupakan portfolio SQL yang mensimulasikan pekerjaan seorang **Data Analyst** dalam menganalisis database transaksi sebuah toko pakaian online menggunakan **MySQL**.
-
-Analisis dilakukan mulai dari eksplorasi data, validasi kualitas data, analisis bisnis, hingga penggunaan teknik SQL tingkat lanjut seperti **JOIN, Aggregate Function, Subquery, Common Table Expression (CTE),** dan **Window Function**.
+Proyek ini merupakan portofolio SQL yang mensimulasikan peran seorang **Data Analyst** dalam menganalisis database e-commerce. Fokus utama proyek ini adalah melakukan **data cleansing** dan menghasilkan **actionable insights** menggunakan fundamental SQL, seperti **Subquery**, **JOIN**, **Aggregate Function**, dan **CASE WHEN** pada **MySQL**.
 
 ---
 
-## 📖 Gambaran Proyek
+## 🎯 Tujuan Analisis
 
-Sebagai seorang Data Analyst, tugas utama tidak hanya mengambil data, tetapi juga mengubah data transaksi menjadi informasi yang dapat membantu pengambilan keputusan bisnis.
+Menjawab pertanyaan bisnis utama terkait:
 
-Database yang digunakan terdiri dari lima tabel yang saling berelasi, yaitu data pelanggan, produk, pesanan, detail pesanan, dan ulasan pelanggan.
-
-Melalui proyek ini dilakukan beberapa tahapan analisis, antara lain:
-
-- Eksplorasi struktur dan isi dataset
-- Validasi kualitas data
-- Analisis penjualan menggunakan SQL
-- Analisis perilaku pelanggan
-- Analisis performa produk
-- Penerapan SQL tingkat lanjut
+* Demografi pelanggan
+* Performa produk yang sesungguhnya
+* Kelancaran proses pembayaran
+* Efisiensi biaya pengiriman
 
 ---
 
-## 📊 Dataset
+## 💡 Temuan Bisnis Kritis (Insights)
 
-| Tabel | Jumlah Data |
-|--------|------------:|
-| Customers | 800 |
-| Products | 300 |
-| Orders | 3.000 |
-| Order Items | 4.986 |
-| Reviews | 1.500 |
+### 📌 1. Ilusi Kategori Produk (Data Quality)
 
-**Total Data : 10.586 baris**
+**Permasalahan**
 
----
+Input kategori produk tidak konsisten, misalnya **"Jaket"** dan **"Jacket"**, sehingga menghasilkan analisis yang menyesatkan.
 
-## 🗂 Struktur Database
+**Temuan**
 
-### Entity Relationship Diagram (ERD)
+Sebelum dilakukan *data cleansing*, kategori **Dress** terlihat sebagai produk terlaris. Setelah data dibersihkan, diketahui bahwa **Jacket** merupakan kategori dengan pendapatan tertinggi sebesar **Rp156,4 juta**.
 
-![ERD](images/ERD.png)
+**Rekomendasi**
+
+Menstandarkan penulisan kategori produk agar hasil analisis lebih akurat.
 
 ---
 
-## 🛠 Teknologi yang Digunakan
+### 💳 2. Anomali Pembayaran
 
-- MySQL
-- phpMyAdmin
-- SQL
-- Git
-- GitHub
+**Temuan**
+
+Metode pembayaran **OVO** memiliki tingkat pembatalan transaksi tertinggi, yaitu **13,10%**.
+
+**Rekomendasi**
+
+Tim IT disarankan menginvestigasi alur API atau UI pada halaman checkout untuk mengurangi potensi *drop-off* pelanggan.
+
+---
+
+### 🚚 3. Efisiensi Logistik
+
+**Temuan**
+
+* **JNE** mendominasi jumlah pengiriman, namun memiliki rata-rata ongkos kirim tertinggi (**Rp24.763**).
+* **SiCepat** dan **J&T** memiliki rata-rata ongkos kirim sekitar **Rp23.000**, sehingga lebih efisien.
+
+**Rekomendasi**
+
+Mempertimbangkan **SiCepat** dan **J&T** sebagai opsi utama dalam program **Gratis Ongkir**.
+
+---
+
+### 👥 4. Target Pasar
+
+**Temuan**
+
+Mayoritas pelanggan merupakan **perempuan berusia 25–34 tahun**. Namun, tingginya penjualan kategori **Jacket** dan **Shirt** menunjukkan adanya potensi pasar pria milenial dengan daya beli yang tinggi.
+
+**Rekomendasi**
+
+Mengembangkan strategi pemasaran yang lebih spesifik untuk menjangkau segmen pelanggan tersebut.
+
+---
+
+> **Catatan:** Screenshot visualisasi atau hasil query dapat dilampirkan pada folder `images/`.
 
 ---
 
 ## 📂 Struktur Repository
 
 ```text
-Ecommerce-SQL-Portfolio/
+E-Commerce-SQL-Portfolio/
+│
+├── README.md
 │
 ├── dataset/
 │   ├── customers.csv
@@ -71,85 +92,24 @@ Ecommerce-SQL-Portfolio/
 │   └── ecommerce.sql
 │
 ├── queries/
-│   ├── 01_data_preparation.sql
-│   ├── 02_business_analysis.sql
-│   └── 03_advanced_sql.sql
+│   ├── 01_data_preparation_and_cleansing.sql
+│   └── 02_business_and_diagnostic_analytics.sql
 │
-├── images/
-│
-└── README.md
+└── images/
+    ├── data_cleansing.png
+    ├── product_analysis.png
+    ├── payment_analysis.png
+    ├── shipping_analysis.png
+    └── customer_analysis.png
 ```
 
 ---
 
-## 📑 Analisis SQL
-
-| File | Deskripsi |
-|------|-----------|
-| 01_data_preparation.sql | Eksplorasi data dan validasi kualitas data |
-| 02_business_analysis.sql | Analisis bisnis menggunakan SQL |
-| 03_advanced_sql.sql | CTE, Subquery, Window Function, dan Ranking |
-
----
-
-## 📈 Pertanyaan Bisnis
-
-Beberapa pertanyaan bisnis yang dijawab pada proyek ini antara lain:
-
-- Berapa total pendapatan yang diperoleh perusahaan?
-- Siapa pelanggan dengan nilai transaksi terbesar?
-- Produk apa yang paling banyak terjual?
-- Kategori produk mana yang menghasilkan pendapatan terbesar?
-- Kota mana yang memberikan kontribusi penjualan tertinggi?
-- Produk apa yang memiliki rating tinggi tetapi penjualannya masih rendah?
-- Siapa saja pelanggan yang melakukan pembelian berulang?
-
----
-
-## 📷 Hasil Analisis
-
-### Top 10 Pelanggan Berdasarkan Total Transaksi
-
-![Top Customer](images/top-customer.png)
-
----
-
-### Top 10 Produk Terlaris
-
-![Best Selling Product](images/best-selling-products.png)
-
----
-
-### Pendapatan Berdasarkan Kategori Produk
-
-![Revenue Category](images/revenue-category.png)
-
----
-
-### Peringkat Produk Terlaris
-
-![Product Ranking](images/product-ranking.png)
-
----
-
-## 💡 Insight Bisnis
-
-Berdasarkan hasil analisis SQL, diperoleh beberapa insight berikut:
-
-- Total pendapatan berasal dari transaksi yang telah selesai (*Delivered*).
-- Sebagian kecil pelanggan memberikan kontribusi yang cukup besar terhadap total penjualan.
-- Beberapa kategori produk memberikan kontribusi pendapatan lebih tinggi dibanding kategori lainnya.
-- Masih terdapat produk dengan rating tinggi namun jumlah penjualannya relatif rendah sehingga berpotensi ditingkatkan melalui promosi.
-- Analisis kota tujuan pengiriman dapat digunakan sebagai dasar penyusunan strategi pemasaran berdasarkan wilayah.
-
----
-
-## 🚀 Cara Menjalankan Proyek
+## 🚀 Cara Menjalankan
 
 1. Clone repository ini.
-2. Import file `database/ecommerce.sql` ke MySQL atau phpMyAdmin.
-3. Jalankan query pada folder `queries`.
-4. Bandingkan hasil query dengan dokumentasi yang tersedia pada README.
+2. Import file `ecommerce.sql` ke dalam **MySQL** atau **phpMyAdmin**.
+3. Jalankan seluruh query pada folder `queries/` secara berurutan.
 
 ---
 
@@ -157,5 +117,5 @@ Berdasarkan hasil analisis SQL, diperoleh beberapa insight berikut:
 
 **Ahmad Supandi**
 
-- GitHub : https://github.com/username
-- LinkedIn : https://linkedin.com/in/username
+* **LinkedIn:** *(https://www.linkedin.com/in/ahmadsupandi19/)*
+* **Portofolio Lainnya:** *(https://github.com/ahmdspndi19)*
