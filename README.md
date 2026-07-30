@@ -43,10 +43,6 @@ Melalui proyek ini dilakukan beberapa tahapan analisis, antara lain:
 
 ![ERD](images/ERD.png)
 
-### Database Designer (phpMyAdmin)
-
-![Designer](images/database-designer.png)
-
 ---
 
 ## 🛠 Teknologi yang Digunakan
