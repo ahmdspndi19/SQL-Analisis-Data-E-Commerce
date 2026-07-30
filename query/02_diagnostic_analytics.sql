@@ -20,6 +20,21 @@ GROUP BY
 ORDER BY 
     total_customers DESC;
 
+-- OUTPUT:
++--------+-----------+-----------------+
+| gender | age_group | total_customers |
++--------+-----------+-----------------+
+| Female | 25-34     |             189 |
+| Male   | 25-34     |             143 |
+| Female | 35-44     |             112 |
+| Female | 18-24     |             108 |
+| Male   | 18-24     |              92 |
+| Male   | 35-44     |              81 |
+| Female | 45+       |              42 |
+| Male   | 45+       |              33 |
++--------+-----------+-----------------+
+8 rows in set (0.001 sec)
+
 -- 2. Peringkat Pendapatan per Kategori (True Revenue)
 -- Menggunakan Subquery agar data dikelompokkan berdasarkan kategori yang SUDAH dibersihkan.
 SELECT 
@@ -46,6 +61,19 @@ WHERE o.order_status = 'Delivered'
 GROUP BY cleaned_products.cleaned_category
 ORDER BY total_revenue DESC;
 
+-- OUTPUT:
++------------------+------------------+---------------+
+| cleaned_category | total_items_sold | total_revenue |
++------------------+------------------+---------------+
+| Jacket           |              551 |     156400000 |
+| Dress            |              474 |     154307000 |
+| Shirt            |              444 |     150127000 |
+| Pants            |              480 |     149269000 |
+| Accessories      |              519 |     149064000 |
+| T-Shirt          |              479 |     140770000 |
++------------------+------------------+---------------+
+6 rows in set (0.019 sec)
+
 -- 3. Rasio Pembatalan Pesanan per Metode Pembayaran
 -- Mendiagnosis kemungkinan masalah integrasi pada metode pembayaran tertentu (contoh: OVO).
 SELECT 
@@ -69,3 +97,15 @@ FROM orders
 WHERE order_status = 'Delivered'
 GROUP BY courier
 ORDER BY total_deliveries DESC;
+
+-- OUTPUT:
++---------------+------------------+-----------------------+
+| courier       | total_deliveries | average_shipping_cost |
++---------------+------------------+-----------------------+
+| JNE           |              510 |              24763.32 |
+| SiCepat       |              497 |              22911.24 |
+| J&T           |              485 |              23167.96 |
+| Anteraja      |              181 |              24400.91 |
+| Pos Indonesia |              103 |              22349.94 |
++---------------+------------------+-----------------------+
+5 rows in set (0.003 sec)
