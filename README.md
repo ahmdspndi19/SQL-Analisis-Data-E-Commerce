@@ -1,85 +1,105 @@
 # 🛍️ E-Commerce SQL Data Analysis
 
-Proyek ini merupakan portofolio SQL yang mensimulasikan peran seorang **Data Analyst** dalam menganalisis database e-commerce. Fokus utama proyek ini adalah melakukan **data cleansing** dan menghasilkan **actionable insights** menggunakan fundamental SQL, seperti **Subquery**, **JOIN**, **Aggregate Function**, dan **CASE WHEN** pada **MySQL**.
+Proyek ini merupakan portofolio SQL yang mensimulasikan peran seorang **Data Analyst** dalam menganalisis data transaksi e-commerce menggunakan **MySQL**.
+
+Analisis berfokus pada proses **data cleansing**, **exploratory data analysis (EDA)**, dan **business analytics** untuk menghasilkan *actionable insights* yang dapat mendukung pengambilan keputusan bisnis.
+
+**Tech Stack:** MySQL • SQL • Data Cleansing • JOIN • Subquery • Aggregate Function • CASE WHEN
 
 ---
 
-## 📊 Sumber Data
+## 📊 Dataset
 
-Dataset yang digunakan dalam proyek ini bersumber dari **ngulik.data.com**.
+Dataset yang digunakan berasal dari **ngulik.data.com** dan terdiri dari lima tabel utama:
 
----
-
-## 🎯 Tujuan Analisis
-
-Menjawab pertanyaan bisnis utama terkait:
-
-* Demografi pelanggan
-* Performa produk yang sesungguhnya
-* Kelancaran proses pembayaran
-* Efisiensi biaya pengiriman
+* **customers** — Informasi pelanggan
+* **products** — Data produk
+* **orders** — Informasi transaksi
+* **order_items** — Detail item pada setiap transaksi
+* **reviews** — Ulasan pelanggan
 
 ---
 
-## 💡 Temuan Bisnis Kritis (Insights)
+## 🎯 Business Objectives
 
-### 📌 1. Ilusi Kategori Produk (Data Quality)
+Analisis dilakukan untuk menjawab beberapa pertanyaan bisnis berikut:
 
-**Permasalahan**
-
-Input kategori produk tidak konsisten, misalnya **"Jaket"** dan **"Jacket"**, sehingga menghasilkan analisis yang menyesatkan.
-
-**Temuan**
-
-Sebelum dilakukan *data cleansing*, kategori **Dress** terlihat sebagai produk terlaris. Setelah data dibersihkan, diketahui bahwa **Jacket** merupakan kategori dengan pendapatan tertinggi sebesar **Rp156,4 juta**.
-
-**Rekomendasi**
-
-Menstandarkan penulisan kategori produk agar hasil analisis lebih akurat.
+* Siapa pelanggan utama berdasarkan demografi?
+* Produk apa yang memberikan pendapatan terbesar?
+* Apakah terdapat permasalahan pada metode pembayaran?
+* Kurir mana yang paling efisien dari sisi biaya pengiriman?
+* Apakah terdapat masalah kualitas data yang memengaruhi hasil analisis?
 
 ---
 
-### 💳 2. Anomali Pembayaran
+# 💡 Business Insights
 
-**Temuan**
+## 1️⃣ Product Category Data Quality
+
+### Problem
+
+Penulisan kategori produk tidak konsisten, misalnya:
+
+* Jacket
+* Jaket
+
+Perbedaan tersebut menyebabkan kategori yang sama dihitung sebagai dua kategori berbeda sehingga menghasilkan laporan penjualan yang tidak akurat.
+
+### Findings
+
+* Sebelum dilakukan *data cleansing*, kategori **Dress** terlihat sebagai kategori dengan pendapatan tertinggi.
+* Setelah standarisasi data, diketahui bahwa kategori **Jacket** merupakan penyumbang pendapatan terbesar dengan total sekitar **Rp156,4 juta**.
+
+### Recommendation
+
+Menerapkan **data validation** dan **standarisasi kategori produk** pada proses input agar kualitas data tetap konsisten.
+
+---
+
+## 2️⃣ Payment Method Analysis
+
+### Findings
 
 Metode pembayaran **OVO** memiliki tingkat pembatalan transaksi tertinggi, yaitu **13,10%**.
 
-**Rekomendasi**
+### Recommendation
 
-Tim IT disarankan menginvestigasi alur API atau UI pada halaman checkout untuk mengurangi potensi *drop-off* pelanggan.
+Tim IT perlu melakukan investigasi terhadap proses pembayaran OVO, baik dari sisi integrasi API maupun pengalaman pengguna (UI/UX), untuk mengurangi potensi *checkout abandonment*.
 
 ---
 
-### 🚚 3. Efisiensi Logistik
+## 3️⃣ Shipping Cost Analysis
 
-**Temuan**
+### Findings
 
-* **JNE** mendominasi jumlah pengiriman, namun memiliki rata-rata ongkos kirim tertinggi (**Rp24.763**).
+* **JNE** menangani jumlah pengiriman terbanyak.
+* Namun, JNE juga memiliki rata-rata ongkos kirim tertinggi (**Rp24.763**).
 * **SiCepat** dan **J&T** memiliki rata-rata ongkos kirim sekitar **Rp23.000**, sehingga lebih efisien.
 
-**Rekomendasi**
+### Recommendation
 
-Mempertimbangkan **SiCepat** dan **J&T** sebagai opsi utama dalam program **Gratis Ongkir**.
-
----
-
-### 👥 4. Target Pasar
-
-**Temuan**
-
-Mayoritas pelanggan merupakan **perempuan berusia 25–34 tahun**. Namun, tingginya penjualan kategori **Jacket** dan **Shirt** menunjukkan adanya potensi pasar pria milenial dengan daya beli yang tinggi.
-
-**Rekomendasi**
-
-Mengembangkan strategi pemasaran yang lebih spesifik untuk menjangkau segmen pelanggan tersebut.
+Mempertimbangkan **SiCepat** dan **J&T** sebagai mitra utama pada program **Gratis Ongkir** guna mengoptimalkan biaya logistik.
 
 ---
 
-## 📂 Struktur Repository
+## 4️⃣ Customer Demographic Analysis
+
+### Findings
+
+Mayoritas pelanggan merupakan **perempuan berusia 25–34 tahun**.
+
+Di sisi lain, tingginya penjualan kategori **Jacket** dan **Shirt** menunjukkan adanya peluang pasar yang besar pada segmen **pria usia produktif**.
+
+### Recommendation
+
+Mengembangkan strategi pemasaran yang lebih tersegmentasi untuk meningkatkan konversi pada kedua kelompok pelanggan tersebut.
+
+---
+
+# 📂 Repository Structure
 
 ```text
-[NAMA_REPOSITORI_KAMU]/
+ecommerce-sql-data-analysis/
 │
 ├── README.md
 │
@@ -103,18 +123,50 @@ Mengembangkan strategi pemasaran yang lebih spesifik untuk menjangkau segmen pel
     ├── payment_analysis.png
     ├── shipping_analysis.png
     └── customer_analysis.png
+```
+
+---
+
+# 🚀 Getting Started
+
+1. Clone repository ini.
+
+2. Import file **database/ecommerce.sql** ke MySQL atau phpMyAdmin.
+
+3. Jalankan query pada folder **queries/** secara berurutan:
 
 ```text
-🚀 Cara Menjalankan
-Clone repository ini.
+01_data_preparation_and_cleansing.sql
+02_business_and_diagnostic_analytics.sql
+```
 
-Import file ecommerce.sql ke dalam MySQL atau phpMyAdmin.
+4. Bandingkan hasil query dengan visualisasi pada folder **images/**.
 
-Jalankan seluruh query pada folder queries/ secara berurutan.
+---
 
-👨‍💻 Penulis
-Ahmad Supandi
+# 🛠️ SQL Concepts Used
 
-LinkedIn: (https://www.linkedin.com/in/ahmadsupandi19/)
+* Data Cleansing
+* Data Validation
+* INNER JOIN
+* LEFT JOIN
+* Subquery
+* Common Table Expression (CTE)
+* Aggregate Function
+* GROUP BY & HAVING
+* CASE WHEN
+* Window Function (jika tersedia)
+* Business Analytics
 
-GitHub: (https://github.com/ahmdspndi19)
+---
+
+# 👨‍💻 Author
+
+**Ahmad Supandi**
+
+* GitHub: https://github.com/ahmdspndi19
+* LinkedIn: https://www.linkedin.com/in/ahmadsupandi19/
+
+---
+
+⭐ Jika proyek ini bermanfaat, jangan lupa berikan **Star** pada repository ini.
