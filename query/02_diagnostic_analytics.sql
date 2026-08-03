@@ -87,6 +87,18 @@ FROM orders
 GROUP BY payment_method
 ORDER BY cancellation_rate_percentage DESC;
 
+-- OUTPUT:
++----------------+--------------+------------------+------------------------------+
+| payment_method | total_orders | cancelled_orders | cancellation_rate_percentage |
++----------------+--------------+------------------+------------------------------+
+| OVO            |          588 |               77 |                        13.10 |
+| Kartu Kredit   |          445 |               53 |                        11.91 |
+| Transfer Bank  |          907 |               93 |                        10.25 |
+| GoPay          |          754 |               76 |                        10.08 |
+| QRIS           |          306 |               29 |                         9.48 |
++----------------+--------------+------------------+------------------------------+
+5 rows in set (0.105 sec)
+
 -- 4. Evaluasi Efisiensi Biaya Logistik Kurir
 -- Melihat dominasi pengiriman dan rata-rata ongkos kirim setiap ekspedisi.
 SELECT 
