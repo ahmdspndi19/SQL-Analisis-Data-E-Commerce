@@ -6,7 +6,7 @@ Proyek ini merupakan portofolio SQL yang mensimulasikan peran seorang **Data Ana
 
 ## 📊 Sumber Data
 
-Dataset yang digunakan dalam proyek ini bersumber dari **[ngulik.data.com/](https://ngulikdata.com/datasets/gayanara)**.
+Dataset yang digunakan dalam proyek ini bersumber dari **ngulik.data.com**.
 
 ---
 
@@ -79,8 +79,7 @@ Mengembangkan strategi pemasaran yang lebih spesifik untuk menjangkau segmen pel
 ## 📂 Struktur Repository
 
 ```text
-E-Commerce SQL-Data Analysis
-/
+[NAMA_REPOSITORI_KAMU]/
 │
 ├── README.md
 │
@@ -104,3 +103,18 @@ E-Commerce SQL-Data Analysis
     ├── payment_analysis.png
     ├── shipping_analysis.png
     └── customer_analysis.png
+
+```text
+🚀 Cara Menjalankan
+Clone repository ini.
+
+Import file ecommerce.sql ke dalam MySQL atau phpMyAdmin.
+
+Jalankan seluruh query pada folder queries/ secara berurutan.
+
+👨‍💻 Penulis
+Ahmad Supandi
+
+LinkedIn: (https://www.linkedin.com/in/ahmadsupandi19/)
+
+GitHub: (https://github.com/ahmdspndi19)
